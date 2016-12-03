@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Transacted</th>
+                <th>Time</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for position in info %}
+        <tr>
+            <td> {{position["history"]}} </td>
+            <td> {{position["time"]}} </td>
+            <td> {{position["symbol"]}} </td>
+            <td> {{position["shares"]}} </td>
+            <td> {{position["price"]}} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}

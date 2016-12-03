@@ -31,7 +31,7 @@ int hash (const char* word)
     {
         // alphabet case
         if(isalpha(word[i]))
-            n = word [i] - 'a' + 1;
+            n = word[i] - 'a' + 1;
         
         // comma case
         else
