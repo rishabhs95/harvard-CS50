@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('buy') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text" required/>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Shares" type="text" required/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Buy</button>
+            </div>
+        </fieldset>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>{{total}}</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for position in info %}
+                    <tr>
+                        <td>{{position["symbol"]}} </td>
+                        <td>{{position["info"]["name"]}}</td>
+                        <td>{{position["shares"]}}</td>
+                        <td>{{position["info"]["price"]}}</td>
+                        <td>{{position["info"]["value"]}}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">CASH</td>
+                    <td>{{cash}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}
